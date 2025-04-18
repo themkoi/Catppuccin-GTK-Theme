@@ -184,7 +184,7 @@ $warning:                               if($variant == 'light', $yellow-dark, $y
 $error:                                 if($variant == 'light', $red-dark, $red-light);
 $success:                               if($variant == 'light', $green-dark, $green-light);
 
-$suggested:                             if($variant == 'light', $blue-dark, $blue-light);
+$suggested:                             theme(color);
 $destructive:                           $error;
 
 $assets-color:                          $primary;

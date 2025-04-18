@@ -12,7 +12,6 @@
 		background-color: $titlebar;
 		border-bottom: 1px solid $divider;
 
-		// FIXME: workaround for wrong size allocation of Nemo
 		entry {
 			min-height: 0;
 			margin: 0;
@@ -26,27 +25,6 @@
 
 		button:not(.text-button) {
 			@extend %titlebar-button;
-		}
-
-		// instead of .path-bar button
-		button.text-button {
-			padding-left: 8px;
-			padding-right: 8px;
-			color: $titlebar-text-secondary;
-
-			&:hover,
-			&:active,
-			&:checked {
-				color: $titlebar-text;
-			}
-
-			&:disabled {
-				color: $titlebar-text-secondary-disabled;
-			}
-
-			&:backdrop {
-				color: $titlebar-text-disabled;
-			}
 		}
 
 		.path-bar.linked:not(.vertical) > button {
@@ -72,14 +50,11 @@
 			}
 		}
 
-		// instead of .path-bar button.slider-button
 		button:not(.text-button):not(.image-button) {
 			padding-left: 4px;
 			padding-right: 4px;
 		}
 	}
-
-	// .nemo-places-sidebar { }
 
 	scrolledwindow.frame {
 		border-style: none;
@@ -89,14 +64,10 @@
 		}
 	}
 
-	// infobar { margin-top: -6px; }
-
-	// Inactive F3 pane shading
 	.nemo-inactive-pane .view:not(:selected) {
 		background-color: $base-alt;
 	}
 
-	// Rename box styling in the icon view.
 	.nemo-window-pane widget.entry {
 		border-radius: $corner-radius / 2;
 		background-color: $fill;
@@ -115,17 +86,47 @@
 	}
 }
 
+// Selection styling
+.nemo-window .view selection,
+.nemo-window .view:selected,
+.nautilus-window notebook .view:not(treeview) selection,
+.nautilus-window notebook .view:not(treeview):selected,
+.nautilus-window flowboxchild:selected .icon-item-background,
+label selection,
+flowbox flowboxchild:selected {
+	color: $primary;
+	background-color: rgba(red($primary), green($primary), blue($primary), 0.15);
+}
+
+.nemo-window .view selection:hover,
+.nemo-window .view:selected:hover,
+.nautilus-window notebook .view:not(treeview) selection:hover,
+.nautilus-window notebook .view:not(treeview):selected:hover,
+.nautilus-window flowboxchild:selected:hover .icon-item-background,
+label selection,
+flowbox flowboxchild:selected:hover {
+	color: $primary;
+	background-color: rgba(red($primary), green($primary), blue($primary), 0.25);
+}
+
+.places-treeview:hover:not(selected),
+.places-treeview:hover {
+	background-color: rgba(red($text-secondary-disabled), green($text-secondary-disabled), blue($text-secondary-disabled), 0.01);
+	color: $text;
+}
+
+
 // For Places Sidebar diskfull indicators
 .places-treeview {
 	-nemoplacestreeview-disk-full-bg-color: mix(
 		$text,
 		$background,
 		percentage(0.3)
-	); // Can't use translucent colors
+	);
 	-nemoplacestreeview-disk-full-fg-color: $primary;
 	-nemoplacestreeview-disk-full-bar-width: 2px;
 	-nemoplacestreeview-disk-full-bar-radius: 0;
-	-nemoplacestreeview-disk-full-bottom-padding: 1px; // There is already hard-coded 1px bottom-padding
+	-nemoplacestreeview-disk-full-bottom-padding: 1px;
 	-nemoplacestreeview-disk-full-max-length: 80px;
 	padding-top: $space-size / 2;
 	padding-bottom: $space-size / 2;
