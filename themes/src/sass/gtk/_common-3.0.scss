@@ -4832,81 +4832,57 @@ decoration {
 	min-height: 16px;
 	min-width: 16px;
 	padding: 0;
-	margin: 0 $space-size - 6px;
-	border-radius: $circular-radius;
-
-	&.minimize,
-	&.maximize,
-	&.close {
-		color: transparent;
-
-		&:hover {
-			box-shadow: none;
+	margin: 0 $space-size / 2 + 1px;
+  
+	&.minimize, &.maximize, &.close {
+	  color: transparent;
+  
+	  &:hover {
+		box-shadow: none;
+	  }
+  
+	  &:active {
+		box-shadow: inset 0 0 0 9999px rgba(black, if($topbar == 'dark', 0.12, 0));
+		background-image: radial-gradient(circle, rgba(black, 0.12) 10%, transparent 0%);
+	  }
+  
+	  &:hover, &:active {
+		color: if($colorscheme != 'dracula', white, rgba(black, 0.5));
+	  }
+  
+	  &:backdrop {
+		background-color: $titlebar-track;
+  
+		&:hover, &:active {
+		  color: $titlebar-text-disabled;
 		}
-
-		&:active {
-			box-shadow: inset 0 0 0 9999px
-				rgba(black, if($topbar == 'dark', 0.12, 0));
-			background-image: radial-gradient(
-				circle,
-				rgba(black, 0.12) 10%,
-				transparent 0%
-			);
-		}
-
-		&:hover,
-		&:active {
-			color: transparent;
-		}
-
-		&:backdrop {
-			background-color: if($variant == 'dark', $grey-700, $grey-300);
-			&:hover,
-			&:active {
-				color: transparent;
-			}
-		}
+	  }
 	}
-
-	&.minimize {
-		// Window minimize button
-		background-color: $titlebutton-min;
-
-		&:hover {
-			background-color: shade($titlebutton-min, 0.4);
-		}
-
-		&:active {
-			background-color: shade($titlebutton-min, 0.6);
-		}
+  
+	&.minimize { // Window minimize button
+	  background-color: $titlebutton-min;
+  
+	  &:active {
+		background-color: mix($titlebar-text, $titlebutton-min, 25%);
+	  }
 	}
-
-	&.maximize {
-		// Window maximize button
-		background-color: $titlebutton-max;
-
-		&:hover {
-			background-color: shade($titlebutton-max, 0.4);
-		}
-
-		&:active {
-			background-color: shade($titlebutton-max, 0.6);
-		}
+  
+	&.maximize { // Window maximize button
+	  background-color: $titlebutton-max;
+  
+	  &:active {
+		background-color: mix($titlebar-text, $titlebutton-max, 25%);
+	  }
 	}
-
-	&.close {
-		// Window close button
-		background-color: $titlebutton-close;
-
-		&:hover {
-			background-color: shade($titlebutton-close, 0.4);
-		}
-
-		&:active {
-			background-color: shade($titlebutton-close, 0.6);
-		}
+  
+	&.close { // Window close button
+	  background-color: $titlebutton-close;
+  
+	  &:active {
+		background-color: mix($titlebar-text, $titlebutton-close, 25%);
+	  }
 	}
-}
+  }
 
 %normal_window_button {
 	min-height: 22px;
