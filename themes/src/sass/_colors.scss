@@ -147,7 +147,7 @@
 // Basic colors
 $primary:                               theme(color);
 $drop_target_color:                     $orange-dark;
-$indicator:                             if($variant == 'dark', mix($primary, background(b), 0%), mix($primary, background(f), 0%));
+$indicator:                             if($variant == 'dark', mix($black, background(b), 85%), mix($white, background(f), 85%));
 $titlebar-indicator:                    if($variant == 'dark', currentColor, $primary);
 $inverse-indicator:                     mix($primary, $white, 0%);
 $applet-primary:                        if($theme == 'grey' and variant == 'light' and $topbar == 'dark', $grey-200, $primary);

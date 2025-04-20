@@ -198,7 +198,7 @@ textview {
 iconview {
 	&:hover,
 	&:selected {
-		border-radius: $corner-radius;
+		border-radius: 0;
 	}
 }
 
